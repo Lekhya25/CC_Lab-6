@@ -35,9 +35,9 @@ pipeline {
                 
                 sleep 5
 
-                docker cp nginx/default.conf nginx-lb:/etc/nginx/conf.d/default.conf
+                docker exec nginx-lb sh -c "until ping -c1 backend1; do sleep 1; done"
 
-                sleep 3
+                docker cp nginx/default.conf nginx-lb:/etc/nginx/conf.d/default.conf
 
                 docker exec nginx-lb nginx -s reload
                 '''
