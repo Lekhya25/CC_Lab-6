@@ -12,7 +12,7 @@ pipeline {
         stage('Deploy Backend Containers') {
             steps {
                 sh '''
-                docker rm -f backend1 backend2 || true
+                docker rm -f nginx-lb backend1 backend2 || true
                 docker network rm app-network || true
                 docker network create app-network
 
