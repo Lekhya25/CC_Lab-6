@@ -40,6 +40,7 @@ pipeline {
                 sleep 3
 
                 docker exec nginx-lb nginx -s reload
+                '''
             }
         }
     }
